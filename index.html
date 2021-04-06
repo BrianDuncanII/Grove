@@ -1,9 +1,9 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/6b6fe1ce5c.js" crossorigin="anonymous"></script>
+<script src="stats.js"></script>
 <script src="buttons.js"></script>
 <script src="tick.js"></script>
-<script src="stats.js"></script>
 <script src="page_navigation.js"></script>
 <script src="upgrades.js"></script>
 <script src="events.js"></script>
@@ -17,7 +17,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> 
 
 <head>
-    <title>Grove inDev</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2PVGVSJ3M9"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2PVGVSJ3M9');
+    </script>
+
+    <title id="title">Grove | 0.10 m</title>
 
     <div id="navbar">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -38,7 +48,7 @@
                     <a onclick="openSettings()" style="color: #ffffff;" class="nav-link active" aria-current="page" href="#">Settings <i class="fas fa-cogs"></i></a>
                 </li>
                 <li>
-                    <p style="color: white;">v.0.1</p>
+                    <p style="color: white;">v.0.1.1</p>
                 </li>
                 </ul>
             </div>
@@ -48,29 +58,29 @@
 </head>
 
 <body>
-    <div style="float:right; background-color: #8b93af; height: 600px; width: 500px; border-style: dotted; border-color: #403353;">
+    <div style="float:right; background-color: #262b44; height: 600px; width: 500px; border-style: solid;; border-color: #c0cbdc;">
         <div style="margin-left: 10px; margin-top: 10px;">
-            <h3>Log <i class="far fa-envelope"></i></h3>
-            <hr style="width: 200;" class="dotted">
+            <h3 style="color: #c0cbdc">Log <i class="far fa-envelope"></i></h3>
+            <hr style="width: 200; color: #c0cbdc" class="dotted">
 
-            <div id="log_container">
+            <div style="height:600px;" id="log_container" class="overflow-auto">
             </div>
         </div>
     </div>
 
     <div style="margin-top: 10px; margin-left: 10px;">
-        <button onclick="openPlant()" type="button" class="btn btn-primary">Plant <i class="fas fa-seedling"></i></button>
+        <button  onclick="openPlant()" type="button" class="btn btn-primary">Plant <i class="fas fa-seedling"></i></button>
         <button id="research_button" tooltip="Yeah, science!" onclick="openResearch()" type="button" class="btn btn-primary flip-in-hor-bottom" hidden>Research <i class="fas fa-microscope"></i></button>
         <button id="upgrades_button" tooltip="Go fast" onclick="openUpgrades()" type="button" class="btn btn-primary flip-in-hor-bottom" hidden>Upgrades <i class="fas fa-arrow-circle-up"></i></button>
         <button id="fruits_button" tooltip="Fruits of your labor" onclick="openFruit()" type="button" class="btn btn-primary flip-in-hor-bottom" hidden>Fruit <i class="fas fa-apple-alt"></i></button>
-        <button id="achievements_button" onclick="openAchievements()" type="button" class="btn btn-primary flip-in-hor-bottom" hidden>Achievements <i class="fas fa-award"></i></button>
+        <button id="achievements_button" tooltip="Ooo, shiny!" onclick="openAchievements()" type="button" class="btn btn-primary flip-in-hor-bottom" hidden>Achievements <i class="fas fa-award"></i></button>
     </div>
     <div style="padding: 10px 10px 10px 10px;">
         <div>
             <h2 style="display: inline; text-shadow: 2px 2px 1px #27274538 ;">You are </h2>
             <h2 id="height" style="display: inline; text-shadow: 2px 2px 1px #27274538 ;">0.10</h2>
             <h2 style="display: inline; text-shadow: 2px 2px 1px #27274538 ;"> meters tall. </h2>
-            <p style="display: inline;" id="rainingNotifier" hidden>It's raining! <i class="fas fa-cloud-showers-heavy fa-border"></i></p>
+            <p tooltip="Rain will give you water over time." style="display: inline;" id="rainingNotifier" hidden>It's raining! <i class="fas fa-cloud-showers-heavy"></i></p>
         </div>
         <div style="display:inline;">
             <p style="display:inline;" id="heightDescription" class="fs-5">You are the size of an acorn.</p>
@@ -80,7 +90,7 @@
     </div>
 
     <!-- Stats Page -->
-    <div hidden=true style="padding: 10px 10px 10px 10px;" id="stats_page" class="fade-in-bottom">
+    <div hidden=true style="padding: 10px 10px 10px 50px;" id="stats_page" class="fade-in-bottom">
         <div>
             <h3>Stats</h3>
             <h6 id="time_played">Time Played:</h6>
@@ -90,14 +100,27 @@
     </div>
 
     <!-- Settings Page -->
-    <div hidden=true style="padding: 10px 10px 10px 10px;" id="settings_page" class="fade-in-bottom">
+    <div hidden=true style="padding: 10px 10px 10px 50px;" id="settings_page" class="fade-in-bottom">
         <div>
             <h3>Settings</h3>
+            <body>
+            <!-- Rounded switch -->
+            <label tooltip="Play audio?" class="switch">
+                <input onclick="audioSettingToggle()" type="checkbox" checked>
+                <span class="slider round"></span>
+            </label>
+            <i class="fas fa-2x fa-volume-down"></i>
+            <!-- Rounded switch -->
+            <label tooltip="Dark Mode?" class="switch">
+                <input onclick="darkModeToggle()" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <i class="fas fa-2x fa-moon"></i>
         </div>
     </div>
 
     <!-- Plant Page -->
-    <div style="padding: 10px 10px 10px 10px;" id="plant_page" class="fade-in-bottom">
+    <div style="padding: 10px 10px 10px 50px;" id="plant_page" class="fade-in-bottom">
         <button id="germinate_button" tooltip="Grow!" onclick="germinate()" type="button" class="btn btn-light">Germinate <i style="color: #225395;" class="fas fa-tint"></i></button>
 
         <div id="seed_container" hidden>
@@ -111,14 +134,24 @@
                 <i class="fas fa-seedling"></i>
             </div>
         </div>
+
+        <div id="worms_container" class="fade-in-bottom" style="margin-top: 50px;" hidden>
+            <h5 id="worms_counter">Worms: 0</h5>
+        </div>
     
     </div>
 
     <!-- Achievements Page -->
-    <div hidden=true style="padding: 10px 10px 10px 10px;" id="achievements_page" class="fade-in-bottom">
+    <div hidden=true style="padding: 10px 10px 10px 50px;" id="achievements_page" class="fade-in-bottom">
         <h3>Achievements <i style="color: #ffd541;" class="fas fa-award"></i></h3>
-        <p id="bountiful_showers_achievement" hidden>Bountiful Showers <i class="fas fa-cloud-showers-heavy"></i></p>
-        <p id="from_the_bottom_achievement" hidden>From the Bottom <i class="fas fa-poo"></i></p>
+        <h6 id="achievement_multiplier_display">Achievement Multiplier: 1x</h6>
+        <ul>
+            <li><p id="bountiful_showers_achievement" hidden>Bountiful Showers - Collect water from a rain shower <i class="fas fa-cloud-showers-heavy"></i></p></li>
+            <li><p id="from_the_bottom_achievement" hidden>From the Bottom - Buy your first upgrade! <i class="fas fa-poo"></i></p></li>
+            <li><p id="carpal_tunnel_I_achievement" hidden>Carpal Tunnel I - Germinate 500 Times :P <i class="fas fa-mouse-pointer"></i></p></li>
+            <li><p id="carpal_tunnel_II_achievement" hidden>Carpal Tunnel II - Germinate 1000 Times :o <i class="fas fa-mouse-pointer"></i></p></li>
+            <li><p id="carpal_tunnel_III_achievement" hidden>Carpal Tunnel III - Germinate 2,500 Times :D<i class="fas fa-mouse-pointer"></i></p></li>
+        </ul>
     </div>
 
     <div hidden=true style="padding: 25px 10px 10px 100px;" id="research_page" class="fade-in-bottom">
@@ -129,7 +162,7 @@
         </div>
     </div>
 
-    <div hidden=true style="padding: 10px 10px 10px 10px; width: 500px;" id="upgrades_page" class="fade-in-bottom">
+    <div hidden=true style="padding: 10px 10px 10px 50px; width: 500px;" id="upgrades_page" class="fade-in-bottom">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -167,7 +200,7 @@
     <div style="padding-top: 150px; padding-left: 10px;">
         <p class="fs-4">Resources <i style="color: #b27b59;" class="fas fa-boxes"></i></p>
         <hr style="width: 200;" class="dotted">
-        <div style="background-color: #a6e5e9; height: 450px; width: 500px; border-style: dotted; border-color: #bababa;">
+        <div style="background-color: #a6e5e9; height: 450px; width: 500px; border-style: solid; border-color: #bababa;">
             <div style="margin: 8px 8px 8px 8px;">
                 <div>
                     <p tooltip="Water helps your plant grow!" style="display: inline; text-shadow: 2px 2px 1px #27274538;" class="fs-5">Water  : </p><p id="water" style="display: inline;" class="fs-5">0.00 ml</p>
@@ -175,7 +208,7 @@
                 </div>
                 <div>
                     <p tooltip="Water helps your plant grow!" style="display: inline; text-shadow: 2px 2px 1px #27274538;" class="fs-5">Light  : </p><p id="light" style="display: inline;" class="fs-5">0.00 lm</p>
-                    <i style="color: #ffd541;" class="fas fa-sun"></i>
+                    <i style="color: #feae34;" class="fas fa-sun"></i>
                 </div>
             </div>
         </div>

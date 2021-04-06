@@ -6,7 +6,8 @@ function openPlant() {
     document.getElementById("settings_page").hidden = true;
     document.getElementById("stats_page").hidden = true;
     var audio = new Audio('snd/snd_button_click.wav');
-    audio.play();
+    if(audioPlay == true)
+        audio.play();
 }
 
 function openHome() {
@@ -17,7 +18,8 @@ function openHome() {
     document.getElementById("settings_page").hidden = true;
     document.getElementById("stats_page").hidden = true;
     var audio = new Audio('snd/snd_button_click.wav');
-    audio.play();
+    if(audioPlay == true)
+        audio.play();
 }
 
 function openResearch() {
@@ -28,7 +30,8 @@ function openResearch() {
     document.getElementById("settings_page").hidden = true;
     document.getElementById("stats_page").hidden = true;
     var audio = new Audio('snd/snd_button_click.wav');
-    audio.play();
+    if(audioPlay == true)
+        audio.play();
 }
 
 function openUpgrades() {
@@ -39,7 +42,8 @@ function openUpgrades() {
     document.getElementById("settings_page").hidden = true;
     document.getElementById("stats_page").hidden = true;
     var audio = new Audio('snd/snd_button_click.wav');
-    audio.play();
+    if(audioPlay == true)
+        audio.play();
 }
 
 function openAchievements() {
@@ -50,7 +54,8 @@ function openAchievements() {
     document.getElementById("settings_page").hidden = true;
     document.getElementById("stats_page").hidden = true;
     var audio = new Audio('snd/snd_button_click.wav');
-    audio.play();
+    if(audioPlay == true)
+        audio.play();
 }
 
 function openStats() {
@@ -61,7 +66,8 @@ function openStats() {
     document.getElementById("settings_page").hidden = true;
     document.getElementById("stats_page").hidden = false;
     var audio = new Audio('snd/snd_button_click.wav');
-    audio.play();
+    if(audioPlay == true)
+        audio.play();
 }
 
 function openSettings() {
@@ -72,5 +78,6 @@ function openSettings() {
     document.getElementById("stats_page").hidden = true;
     document.getElementById("settings_page").hidden = false;
     var audio = new Audio('snd/snd_button_click.wav');
-    audio.play();
+    if(audioPlay == true)
+        audio.play();
 }

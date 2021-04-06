@@ -17,6 +17,7 @@ function buy_internalClock() {
         document.getElementById("log_container").appendChild(upgradeLog);
 
         var audio = new Audio('snd/snd_button_buy.wav');
-        audio.play();
+        if(audioPlay == true)
+            audio.play();
     }
 }

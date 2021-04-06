@@ -12,9 +12,11 @@ function buy_thickerRoots() {
             audio.play();
             var achievementLog = document.createElement("p");
             achievementLog.innerHTML = "<i class='far fa-envelope-open'></i> You earned the From the Bottom achievement!";
-            achievementLog.style = "color: #ffd541;";
+            achievementLog.style = "color: #fee761;";
+            achievementLog.class = ".flip-in-hor-bottom";
             document.getElementById("log_container").appendChild(achievementLog);
             document.getElementById("from_the_bottom_achievement").hidden = false;
+            lightMultiplier += 0.15;
         }
 
         thickerRoots = true;
@@ -22,16 +24,19 @@ function buy_thickerRoots() {
         document.getElementById("thickerRootsButton").classList.remove("btn", "btn-primary");
         document.getElementById("thickerRootsButton").classList.add("btn", "btn-outline-success", "disabled");
         water -= 1;
+        water_used += 1;
         document.getElementById("water").innerHTML = water.toFixed(2) + " ml";
 
         // Post upgrade notification to log
         var upgradeLog = document.createElement("p");
         upgradeLog.innerHTML = "<i class='far fa-envelope-open'></i> You now have beautiful thick roots! x2 to Germination.";
-        upgradeLog.style = "color: #bc4a9b;";
+        upgradeLog.style = "color: #2ce8f5;";
+        upgradeLog.class = ".flip-in-hor-bottom";
         document.getElementById("log_container").appendChild(upgradeLog);
 
         var audio = new Audio('snd/snd_button_buy.wav');
-        audio.play();
+        if(audioPlay == true)
+            audio.play();
     }
 }
 
@@ -42,16 +47,19 @@ function buy_determinationI() {
         document.getElementById("determinationIButton").classList.remove("btn", "btn-primary");
         document.getElementById("determinationIButton").classList.add("btn", "btn-outline-success", "disabled");
         water -= 3;
+        water_used += 3;
         document.getElementById("water").innerHTML = water.toFixed(2) + " ml";
 
         // Post upgrade notification to log
         var upgradeLog = document.createElement("p");
         upgradeLog.innerHTML = "<i class='far fa-envelope-open'></i> You feel more determined... x2 to Germination.";
-        upgradeLog.style = "color: #bc4a9b;";
+        upgradeLog.style = "color: #2ce8f5;";
+        upgradeLog.class = "flip-in-hor-bottom";
         document.getElementById("log_container").appendChild(upgradeLog);
 
         var audio = new Audio('snd/snd_button_buy.wav');
-        audio.play();
+        if(audioPlay == true)
+            audio.play();
     }
 }
 
@@ -62,16 +70,19 @@ function buy_cellHealthI() {
         document.getElementById("cellHealthIButton").classList.add("btn", "btn-outline-success", "disabled");
         heightAddition += 0.0005
         water -= 6;
+        water_used += 6;
         document.getElementById("water").innerHTML = water.toFixed(2) + " ml";
 
         // Post upgrade notification to log
         var upgradeLog = document.createElement("p");
         upgradeLog.innerHTML = "<i class='far fa-envelope-open'></i> Your cells work in unison. Increased growth.";
-        upgradeLog.style = "color: #bc4a9b;";
+        upgradeLog.style = "color: #2ce8f5;";
+        upgradeLog.class = "flip-in-hor-bottom";
         document.getElementById("log_container").appendChild(upgradeLog);
 
         var audio = new Audio('snd/snd_button_buy.wav');
-        audio.play();
+        if(audioPlay == true)
+            audio.play();
     }
 }
 
@@ -87,10 +98,12 @@ function buy_absorptionI() {
         // Post upgrade notification to log
         var upgradeLog = document.createElement("p");
         upgradeLog.innerHTML = "<i class='far fa-envelope-open'></i> Praise the sun! Increased light absorption.";
-        upgradeLog.style = "color: #bc4a9b;";
+        upgradeLog.style = "color: #2ce8f5;";
+        upgradeLog.class = "flip-in-hor-bottom";
         document.getElementById("log_container").appendChild(upgradeLog);
 
         var audio = new Audio('snd/snd_button_buy.wav');
-        audio.play();
+        if(audioPlay == true)
+            audio.play();
     }
 }

@@ -3,8 +3,10 @@ var water = 0;
 var light = 0;
 var seedProgress = 0;
 var seeds = 0;
+var worms = 0;
 var germinateMultiplier = 1;
 var lightAddition = 0;
+var lightMultiplier = 1;
 var heightAddition = 0;
 var raining = false;
 
@@ -14,6 +16,9 @@ var plant_health_max = 100;
 // Achievements
 var bountifulShowers = false;
 var fromTheBottom = false;
+var carpalTunnelI = false;
+var carpalTunnelII = false;
+var carpalTunnelIII = false;
 
 // World Stats
 var year = 1;
@@ -27,6 +32,9 @@ var minutes_played = 0;
 var seconds_played = 0;
 var times_germinated = 0;
 var water_used = 0;
+
+// Player Settings
+var audioPlay = true;
 
 function descriptionUpdate() {
     if(height >= 10)
