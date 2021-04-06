@@ -27,5 +27,7 @@ function playEvent() {
         eventLog.innerHTML = "<i class='far fa-envelope-open'></i> Somebody poured out their water bottle on you, you're no longer thirsty!";
         water += water*0.75;
         document.getElementById("log_container").appendChild(eventLog);
+    } else {
+        break;
     }
 }

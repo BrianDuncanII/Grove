@@ -8,6 +8,9 @@ var lightAddition = 0;
 var heightAddition = 0;
 var raining = false;
 
+var plant_health = 75;
+var plant_health_max = 100;
+
 // Achievements
 var bountifulShowers = false;
 var fromTheBottom = false;
@@ -17,6 +20,13 @@ var year = 1;
 var day = 1;
 var month = 3;
 var season = "Spring";
+
+// Player Stats
+var hours_played = 0;
+var minutes_played = 0;
+var seconds_played = 0;
+var times_germinated = 0;
+var water_used = 0;
 
 function descriptionUpdate() {
     if(height >= 10)
@@ -40,4 +50,6 @@ function descriptionUpdate() {
         document.getElementById("heightDescription").innerHTML = "You are the size of a paperclip. " + "<i class='fas fa-paperclip'></i>";
     else if(height >= 0.20)
         document.getElementById("heightDescription").innerHTML = "You are the size of a staple.";
+    else
+        document.getElementById("heightDescription").innerHTML = "You are the size of an acorn. " + "<i style='color: #804b38; display:inline;' class='fas fa-seedling'></i>";
 }

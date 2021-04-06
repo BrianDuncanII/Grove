@@ -9,13 +9,13 @@
 }
 
 head {
-    font-family: "interUI";
+    font-family: 'Inter', sans-serif;
     color: #ffffff;
 }
 
 body {
 	background-color: #c2ebed;
-    font-family: "interUI";
+    font-family: 'Inter', sans-serif;
 }
 
 p,a,h1,h2,h3,h4,h5,h6 {

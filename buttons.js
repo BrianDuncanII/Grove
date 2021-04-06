@@ -5,6 +5,7 @@ function germinate() {
     printMousePos();
     var audio = new Audio('snd/snd_germinate_click.wav');
     audio.play();
+    times_germinated += 1;
 }
 
 function printMousePos() {

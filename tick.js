@@ -4,16 +4,32 @@ var timeOutSet = false;
 setInterval(tick, 1000)
 
 function tick() {
-    if(season == "Spring")
-        rainChance = Math.floor(Math.random() * (75 - 1) + 1);
-    else
-        rainChance = Math.floor(Math.random() * (125 - 1) + 1);
+    if(seconds_played < 60) {
+        seconds_played += 1;
+    } else {
+        seconds_played = 1;
+        minutes_played += 1;
+    }
 
-    eventChance = Math.floor(Math.random() * (150 - 1) + 1);
+    if(minutes_played == 60) {
+        minutes_played = 0;
+        hours_played += 1;
+    }
+
+    document.getElementById("time_played").innerHTML = "<i class='far fa-clock'></i> Time Played: " + hours_played + " Hours, " + minutes_played + " Minutes, " + seconds_played + " Seconds";
+    document.getElementById("times_germinated").innerHTML = "<i class='fas fa-mouse-pointer'></i> Times Germinated: " + times_germinated;
+    document.getElementById("water_used").innerHTML = "<i class='fas fa-water'></i> Water Used: " + water_used + " ml";
+
+    if(season == "Spring")
+        rainChance = Math.floor(Math.random() * (200 - 1) + 1);
+    else
+        rainChance = Math.floor(Math.random() * (450 - 1) + 1);
+
+    eventChance = Math.floor(Math.random() * (500 - 1) + 1);
     height += water*0.0005 + heightAddition;
     light += height*0.005 + lightAddition;
 
-    if(eventChance == 50) {
+    if(eventChance == 250) {
         playEvent();
     }
 
@@ -118,7 +134,7 @@ function tick() {
     } else {
         day = 1;
 
-        if(month < 12)
+        if(month < 13)
             month += 1;
         else {
             month = 1;

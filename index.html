@@ -13,6 +13,9 @@
 <link href="tooltips.css" rel="stylesheet">
 <link href="animation.css" rel="stylesheet">
 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> 
+
 <head>
     <title>Grove inDev</title>
 
@@ -26,13 +29,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a style="color: #ffffff;" class="nav-link active" aria-current="page" href="#">Home <i class="fas fa-home"></i></a>
+                    <a onclick="openHome()" style="color: #ffffff;" class="nav-link active" aria-current="page" href="#">Home <i class="fas fa-home"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a style="color: #ffffff;" class="nav-link active" aria-current="page" href="#">Stats <i class="far fa-chart-bar"></i></a>
+                    <a onclick="openStats()" style="color: #ffffff;" class="nav-link active" aria-current="page" href="#">Stats <i class="far fa-chart-bar"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a style="color: #ffffff;" class="nav-link active" aria-current="page" href="#">Settings <i class="fas fa-cogs"></i></a>
+                    <a onclick="openSettings()" style="color: #ffffff;" class="nav-link active" aria-current="page" href="#">Settings <i class="fas fa-cogs"></i></a>
                 </li>
                 <li>
                     <p style="color: white;">v.0.1</p>
@@ -66,15 +69,31 @@
         <div>
             <h2 style="display: inline; text-shadow: 2px 2px 1px #27274538 ;">You are </h2>
             <h2 id="height" style="display: inline; text-shadow: 2px 2px 1px #27274538 ;">0.10</h2>
-            <h2 style="display: inline; text-shadow: 2px 2px 1px #27274538 ;"> meters tall.</h2>
+            <h2 style="display: inline; text-shadow: 2px 2px 1px #27274538 ;"> meters tall. </h2>
+            <p style="display: inline;" id="rainingNotifier" hidden>It's raining! <i class="fas fa-cloud-showers-heavy fa-border"></i></p>
         </div>
         <div style="display:inline;">
             <p style="display:inline;" id="heightDescription" class="fs-5">You are the size of an acorn.</p>
-            <i style="color: #804b38; display:inline;" class="fas fa-seedling"></i>
             <hr style="width: 500px;" class="dotted">
             <p id="current_date" hidden>Date</p>
         </div>
-        <p id="rainingNotifier" hidden>It's raining! <i class="fas fa-cloud-showers-heavy fa-border"></i></p>
+    </div>
+
+    <!-- Stats Page -->
+    <div hidden=true style="padding: 10px 10px 10px 10px;" id="stats_page" class="fade-in-bottom">
+        <div>
+            <h3>Stats</h3>
+            <h6 id="time_played">Time Played:</h6>
+            <h6 id="times_germinated">Times Germinated:</h6>
+            <h6 id="water_used">Water Used:</h6>
+        </div>
+    </div>
+
+    <!-- Settings Page -->
+    <div hidden=true style="padding: 10px 10px 10px 10px;" id="settings_page" class="fade-in-bottom">
+        <div>
+            <h3>Settings</h3>
+        </div>
     </div>
 
     <!-- Plant Page -->
