@@ -106,7 +106,7 @@
             <h2 id="height" style="display: inline; text-shadow: 2px 2px 1px #27274538 ;">0.10</h2>
             <h2 style="display: inline; text-shadow: 2px 2px 1px #27274538 ;"> meters tall. </h2>
             <div style="display:inline; color: #a22633;" tooltip="Growth is affected by upgrades and total water"><i class="far fa-question-circle"></i></div>
-            <p tooltip="Rain will give you water over time." style="display: inline;" id="rainingNotifier" hidden>It's
+            <p class="fade-in-bottom" tooltip="Rain will give you water over time." style="display: inline;" id="rainingNotifier" hidden>It's
                 raining! <i class="fas fa-cloud-showers-heavy"></i></p>
         </div>
         <div class="disable-text-selection" style="display:inline;">
@@ -188,13 +188,13 @@
                 </div>
             </div>
 
-            <div>
+            <div class="fade-in-bottom">
                 <p style="display: inline;" id="seed_total">Seeds: 0</p>
                     <i class="fas fa-seedling"></i>
             </div>
         </div>
 
-        <div id="worms_container" class="fade-in-bottom" style="margin-top: 50px;" hidden>
+        <div class="fade-in-bottom" id="worms_container" class="fade-in-bottom" style="margin-top: 50px;" hidden>
             <h5 id="worms_counter">Worms: 0</h5>
         </div>
 
@@ -299,17 +299,17 @@
                             onclick="buy_determinationI()">Determination I <i class="fas fa-seedling"></i></button>
                         <p>Cost: 3 ml Water <i style="color: #225395;" class="fas fa-tint"></i></p>
                     </div>
-                    <div id="determinationIIContainer" hidden>
+                    <div class="fade-in-bottom" id="determinationIIContainer" hidden>
                         <button id="determinationIIButton" tooltip="Grow faster through determination! | x2 Germination" type="button" class="btn btn-primary disabled"
                             onclick="buy_determinationII()">Determination II <i class="fas fa-seedling"></i></button>
                         <p>Cost: 10 ml Water <i style="color: #225395;" class="fas fa-tint"></i></p>
                     </div>
-                    <div id="determinationIIIContainer" hidden>
+                    <div class="fade-in-bottom" id="determinationIIIContainer" hidden>
                         <button id="determinationIIIButton" tooltip="Grow faster through determination! | x2 Germination" type="button" class="btn btn-primary disabled"
                             onclick="buy_determinationIII()">Determination III <i class="fas fa-seedling"></i></button>
                         <p>Cost: 35 ml Water <i style="color: #225395;" class="fas fa-tint"></i></p>
                     </div>
-                    <div id="cellHealthIContainer" hidden>
+                    <div class="fade-in-bottom" id="cellHealthIContainer" hidden>
                         <button id="cellHealthIButton" tooltip="Your cells become more healthy! |
                         Improves total growth" type="button" class="btn btn-primary disabled"
                             onclick="buy_cellHealthI()">Cell Health I <i class="fas fa-seedling"></i></button>
@@ -318,18 +318,18 @@
                 </div>
 
                 <div class="col">
-                    <div id="absorptionIContainer" hidden>
+                    <div class="fade-in-bottom" id="absorptionIContainer" hidden>
                         <button id="absorptionIButton" tooltip="Gain increased ability to absorb light! | Increased light absorption" type="button" class="btn btn-primary disabled"
                             onclick="buy_absorptionI()">Absorption I <i style="color: #ffd541;"
                                 class="fas fa-sun"></i></button>
                         <p>Cost: 0.10 lm <i style="color: #ffd541;" class="fas fa-sun"></i></p>
                     </div>
-                    <div id="smarterRootsContainer" hidden>
+                    <div class="fade-in-bottom" id="smarterRootsContainer" hidden>
                         <button id="smarterRootsButton" tooltip="Your roots absorb even more water | x2 water/sec" type="button" class="btn btn-primary disabled"
                             onclick="buy_smarterRoots()">Smarter Roots <i class="fas fa-glasses"></i></button>
                         <p>Cost: 1.50 lm <i style="color: #ffd541;" class="fas fa-sun"></i></p>
                     </div>
-                    <div id="geniusRootsContainer" hidden>
+                    <div class="fade-in-bottom" id="geniusRootsContainer" hidden>
                         <button id="geniusRootsButton" tooltip="Your roots become genius water collectors! | x5 water/sec" type="button" class="btn btn-primary disabled"
                             onclick="buy_geniusRoots()">Genius Roots <i class="fas fa-glasses"></i></button>
                         <p>Cost: 7.50 lm <i style="color: #ffd541;" class="fas fa-sun"></i></p>
