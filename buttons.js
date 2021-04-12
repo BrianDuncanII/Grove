@@ -7,13 +7,14 @@ function germinate() {
     if(audioPlay == true)
         audio.play();
     times_germinated += 1;
+    document.getElementById("resources_container").hidden = false;
 }
 
 function printMousePos() {
     var x = event.clientX;
     var y = event.clientY; 
     var btn = document.createElement("p");   // Create a <button> element
-    btn.innerHTML = "+"+0.01*germinateMultiplier;
+    btn.innerHTML = "+"+0.01*germinateMultiplier+" ml";
     btn.style = "display: absolute; margin-left: x; float: none; position: absolute; z-index: 1;";
     btn.classList = "fade-out-top";
     btn.id = "floating_text"
