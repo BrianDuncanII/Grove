@@ -1,9 +1,10 @@
 var height = 0.10;
 var water = 0;
-var waterPerSec = 0;
+var waterPerSec = 0.05;
 var light = 0;
 var seedProgress = 0;
 var seeds = 0;
+var cats = 0;
 var worms = 0;
 var wormPoop = 0;
 var germinateMultiplier = 1;
@@ -27,7 +28,10 @@ var carpalTunnelI = false;
 var carpalTunnelII = false;
 var carpalTunnelIII = false;
 var smallBoi = false;
+var bigBoi = false;
 var aFriendInNeed = false;
+var cultFollowing = false;
+var sharingIsCaring = false;
 
 // World Stats
 var year = 1;
@@ -46,7 +50,25 @@ var water_used = 0;
 var audioPlay = true;
 
 function descriptionUpdate() {
-    if (height >= 10)
+    if (height >= 180)
+        document.getElementById("heightDescription").innerHTML = "You are the size of The Space Needle. " + "<i class='fas fa-tree'></i>";
+    else if (height >= 150)
+        document.getElementById("heightDescription").innerHTML = "You are the size of The Washington Monument. " + "<i class='fas fa-tree'></i>";
+    else if (height >= 110)
+        document.getElementById("heightDescription").innerHTML = "You are the size of a Football Field. " + "<i class='fas fa-tree'></i>";
+    else if (height >= 90)
+        document.getElementById("heightDescription").innerHTML = "You are the size of The Statue of Liberty " + "<i class='fas fa-tree'></i>";
+    else if (height >= 70)
+        document.getElementById("heightDescription").innerHTML = "You are the size of a Giant Sequoia tree. " + "<i class='fas fa-tree'></i>";
+    else if (height >= 55)
+        document.getElementById("heightDescription").innerHTML = "You are the size of The Leaning Tower of Pisa. " + "<i class='fas fa-tree'></i>";
+    else if (height >= 45)
+        document.getElementById("heightDescription").innerHTML = "You are the size of The Chicago Water Tower " + "<i class='fas fa-tree'></i>";
+    else if (height >= 20)
+        document.getElementById("heightDescription").innerHTML = "You are the size of a Bowling Lane. " + "<i class='fas fa-tree'></i>";
+    else if (height >= 15)
+        document.getElementById("heightDescription").innerHTML = "You are the size of The Hollywood Sign " + "<i class='fas fa-tree'></i>";
+    else if (height >= 10)
         document.getElementById("heightDescription").innerHTML = "You are the size of a big tree :). " + "<i class='fas fa-tree'></i>";
     else if (height >= 7) {
         document.getElementById("heightDescription").innerHTML = "You are the size of an average tree :o. " + "<i class='fas fa-tree'></i>";

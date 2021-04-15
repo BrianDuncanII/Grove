@@ -10,6 +10,7 @@ function tick() {
     document.getElementById("achievement_multiplier_display").innerHTML = "Light Absorption Multiplier: " + lightMultiplier.toFixed(2) + "x lm/sec";
     document.getElementById("water_sec_counter").innerHTML = "(" + waterPerSec.toFixed(2) + " ml/sec)";
     document.getElementById("follower_counter").innerHTML = "Followers: " + followers;
+    document.getElementById("cat_counter").innerHTML = "Cats: " + cats;
 
     if(smartRoots == true) {
         water += waterPerSec;
@@ -109,6 +110,38 @@ function tick() {
         lightMultiplier += 0.15;
     }
 
+    if(height >= 10.00 & bigBoi == false) {
+        bigBoi = true;
+        document.getElementById("achievements_button").hidden = false;
+        var audio = new Audio('snd/snd_achievement.wav');
+        if (audioPlay == true)
+            audio.play();
+        var achievementLog = document.createElement("p");
+        achievementLog.innerHTML = "<i class='far fa-envelope-open'></i> You earned the Big Boi achievement!";
+        achievementLog.style = "color: #fee761;";
+        achievementLog.class = "flip-in-hor-bottom";
+        document.getElementById("log_div").hidden = false;
+        document.getElementById("log_container").appendChild(achievementLog);
+        document.getElementById("big_boi_achievement").hidden = false;
+        lightMultiplier += 0.15;
+    }
+
+    if(followers >= 1 & cultFollowing == false) {
+        cultFollowing = true;
+        document.getElementById("achievements_button").hidden = false;
+        var audio = new Audio('snd/snd_achievement.wav');
+        if (audioPlay == true)
+            audio.play();
+        var achievementLog = document.createElement("p");
+        achievementLog.innerHTML = "<i class='far fa-envelope-open'></i> You earned the Cult Following achievement!";
+        achievementLog.style = "color: #fee761;";
+        achievementLog.class = "flip-in-hor-bottom";
+        document.getElementById("log_div").hidden = false;
+        document.getElementById("log_container").appendChild(achievementLog);
+        document.getElementById("cult_following_achievement").hidden = false;
+        lightMultiplier += 0.15;
+    }
+
     // World Time Update
     if (day < 30) {
         day += 1;
@@ -142,14 +175,23 @@ function tick() {
     else if (season == "Spring")
         document.getElementById("current_date").innerHTML = "Year " + year + " | " + season + " <i class='fas fa-rainbow'></i>";
 
-    if (season == "Summer")
+    if (season == "Summer") {
         light += (height * 0.006 + lightAddition) * lightMultiplier;
-    else if (season == "Autumn")
+        var lightPerSec = (height * 0.006 + lightAddition) * lightMultiplier;
+        document.getElementById("light_per_sec").innerHTML = "( " + lightPerSec.toFixed(3) + " lm/sec)";
+    } else if (season == "Autumn") {
         light += (height * 0.005 + lightAddition) * lightMultiplier;
-    else if (season == "Winter")
+        var lightPerSec = (height * 0.005 + lightAddition) * lightMultiplier;
+        document.getElementById("light_per_sec").innerHTML = "( " + lightPerSec.toFixed(3) + " lm/sec)";
+    } else if (season == "Winter") {
         light += (height * 0.004 + lightAddition) * lightMultiplier;
-    else if (season == "Spring")
+        var lightPerSec = (height * 0.004 + lightAddition) * lightMultiplier;
+        document.getElementById("light_per_sec").innerHTML = "( " + lightPerSec.toFixed(3) + " lm/sec)";
+    } else if (season == "Spring") {
         light += (height * 0.005 + lightAddition) * lightMultiplier;
+        var lightPerSec = (height * 0.005 + lightAddition) * lightMultiplier;
+        document.getElementById("light_per_sec").innerHTML = "( " + lightPerSec.toFixed(3) + " lm/sec)";
+    }
         
     document.getElementById("light").innerHTML = light.toFixed(2) + "lm";
 
@@ -164,11 +206,37 @@ function tick() {
 
     eventChance = Math.floor(Math.random() * (150 - 1) + 1);
     personalityLearnChance = Math.floor(Math.random() * (500 - 1) + 1);
-    followerChance = Math.floor(Math.random() * (350 - 1) + 1);
-    height += (water * (0.0005) + heightAddition);
+    followerChance = Math.floor(Math.random() * ((350-height)*0.15 - 1) + 1);
+    wormMateChance = Math.floor(Math.random() * (350 - 1) + 1);
+    catMateChance = Math.floor(Math.random() * (350 - 1) + 1);
+    height += (water * (0.0001) + heightAddition);
     height += wormPoop * (0.001);
+    var heightPerSec = (water * (0.0001) + heightAddition) + (wormPoop * (0.001));
+    heightPerSec = heightPerSec.toFixed(3);
+    document.getElementById("meters_per_sec").innerHTML = "( " + heightPerSec + " m/sec )"
 
-    if(followerChance == 175 && height <= 1.00) {
+    if(wormMateChance == 175 && worms > 1) {
+        worms++;
+        var achievementLog = document.createElement("p");
+        achievementLog.innerHTML = "<i class='far fa-envelope-open'></i> Your worms have mated! You now have " + worms + " worms.";
+        achievementLog.style = "color: #fee761;";
+        achievementLog.class = "flip-in-hor-bottom";
+        document.getElementById("log_container").appendChild(achievementLog);
+        document.getElementById("log_div").hidden = false;
+    }
+
+    if(catMateChance == 175 && cats > 1) {
+        cats++;
+        var achievementLog = document.createElement("p");
+        achievementLog.innerHTML = "<i class='fas fa-cat'></i> Your cats have mated! You now have " + cats + " cats.";
+        achievementLog.style = "color: #fee761;";
+        achievementLog.class = "flip-in-hor-bottom";
+        document.getElementById("log_container").appendChild(achievementLog);
+        document.getElementById("log_div").hidden = false;
+        document.getElementById("cat_counter").innerHTML = "<i class='fas fa-cat'></i> Cats: " + cats;
+    }
+
+    if(followerChance == (175)-height*0.15 && height <= 1.00) {
         gainFollower();
         document.getElementById("religion_button").hidden = false;
     }
@@ -265,6 +333,20 @@ function tick() {
             document.getElementById("produceFruitButton").classList.add("disabled");
     }
 
+    if (light >= 10.00 && whoAmI == false) {
+        document.getElementById("whoAmIButton").classList.remove("disabled");
+    } else {
+        if (!document.getElementById("whoAmIButton").classList.contains("disabled"))
+            document.getElementById("whoAmIButton").classList.add("disabled");
+    }
+
+    if (light >= 25.00 && photosynthesis == false) {
+        document.getElementById("photosynthesisButton").classList.remove("disabled");
+    } else {
+        if (!document.getElementById("photosynthesisButton").classList.contains("disabled"))
+            document.getElementById("photosynthesisButton").classList.add("disabled");
+    }
+
     if (light >= 0.10 && internalClock == false) {
         document.getElementById("internalClockButton").classList.remove("disabled");
     } else {
@@ -277,6 +359,13 @@ function tick() {
     } else {
         if (!document.getElementById("smartRootsButton").classList.contains("disabled"))
             document.getElementById("smartRootsButton").classList.add("disabled");
+    }
+
+    if (light >= 5.00 && lemonTree == false) {
+        document.getElementById("lemonTreeButton").classList.remove("disabled");
+    } else {
+        if (!document.getElementById("lemonTreeButton").classList.contains("disabled"))
+            document.getElementById("lemonTreeButton").classList.add("disabled");
     }
 
     if (rainChance == 25 && raining == false) {
@@ -307,7 +396,7 @@ function tick() {
             document.getElementById("log_div").hidden = false;
             lightMultiplier += 0.15;
         }
-        water += water*0.025;
+        water += height*0.005;
         document.getElementById("water").innerHTML = water.toFixed(2) + " ml";
         if (timeOutSet == false) {
             timeOutSet = true;
